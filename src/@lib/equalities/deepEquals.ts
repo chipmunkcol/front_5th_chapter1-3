@@ -39,7 +39,7 @@ export function deepEquals<T>(objA: T, objB: T): boolean {
 
 function normalizeObject(
   objA: Record<string, unknown>,
-  objB: Record<string, unknown>
+  objB: Record<string, unknown>,
 ) {
   const objAkeys = Object.keys(objA);
   const objBkeys = Object.keys(objB);
