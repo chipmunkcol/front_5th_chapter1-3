@@ -1,4 +1,5 @@
 import { createContext, useCallback, useMemo, useState } from "react";
+import { useNotificationContext } from "../@lib/hooks/useNotificationContext";
 
 interface User {
   id: number;
@@ -19,14 +20,17 @@ type Props = {
 };
 
 export const UserProvider = ({ children }: Props) => {
+  const { addNotification } = useNotificationContext();
   const [user, setUser] = useState<User | null>(null);
 
   const login = useCallback((email: string) => {
     setUser({ id: 1, name: "홍길동", email });
+    addNotification("성공적으로 로그인되었습니다", "success");
   }, []);
 
   const logout = useCallback(() => {
     setUser(null);
+    addNotification("로그아웃되었습니다", "info");
   }, []);
 
   const contextValue: ContextValue = useMemo(
@@ -35,7 +39,7 @@ export const UserProvider = ({ children }: Props) => {
       login,
       logout,
     }),
-    [user],
+    [user]
   );
 
   return (

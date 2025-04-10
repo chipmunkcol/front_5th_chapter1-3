@@ -1,5 +1,4 @@
-import { useCallback, memo } from "react";
-import { useNotificationContext } from "../@lib/hooks/useNotificationContext";
+import { memo, useCallback } from "react";
 import { useThemeContext } from "../@lib/hooks/useThemeContext";
 import { useUserContext } from "../@lib/hooks/useUserContext";
 import { renderLog } from "../utils";
@@ -9,20 +8,20 @@ export const Header: React.FC = memo(() => {
   renderLog("Header rendered");
   // const { theme, toggleTheme, user, login, logout } = useAppContext();
   const { theme, toggleTheme } = useThemeContext();
-  const { addNotification } = useNotificationContext();
+  // const { addNotification } = useNotificationContext();
   const { login, logout, user } = useUserContext();
 
   const handleLogin = useCallback(() => {
     // 실제 애플리케이션에서는 사용자 입력을 받아야 합니다.
     // login("user@example.com", "password");
     login("user@example.com");
-    addNotification("성공적으로 로그인되었습니다", "success");
-  }, [login, addNotification]);
+    // addNotification("성공적으로 로그인되었습니다", "success");
+  }, [login]);
 
   const handleLogout = useCallback(() => {
     logout();
-    addNotification("로그아웃되었습니다", "info");
-  }, [logout, addNotification]);
+    // addNotification("로그아웃되었습니다", "info");
+  }, [logout]);
 
   return (
     <header className="bg-gray-800 text-white p-4">

@@ -30,12 +30,12 @@ export const NotificationProvider = ({ children }: Props) => {
       };
       setNotifications((prev) => [...prev, newNotification]);
     },
-    [],
+    []
   );
 
   const removeNotification = useCallback((id: number) => {
     setNotifications((prev) =>
-      prev.filter((notification) => notification.id !== id),
+      prev.filter((notification) => notification.id !== id)
     );
   }, []);
 
@@ -45,7 +45,7 @@ export const NotificationProvider = ({ children }: Props) => {
       addNotification,
       removeNotification,
     }),
-    [notifications, addNotification, removeNotification],
+    [notifications]
   );
 
   return (
