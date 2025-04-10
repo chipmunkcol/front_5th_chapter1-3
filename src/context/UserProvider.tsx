@@ -39,7 +39,7 @@ export const UserProvider = ({ children }: Props) => {
       login,
       logout,
     }),
-    [user]
+    [user],
   );
 
   return (
